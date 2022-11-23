@@ -1,12 +1,48 @@
 import Header from "components/Header";
 import React from "react";
+import { Link } from "react-router-dom";
+import { getElapsedTime } from "utils/getElapsedTime";
+import { Subscript, Title, WrapHomepage } from "./styles";
 
-const Homepage = () => {
+const Homepage = ({ newsList, isLoading, page }) => {
   return (
-    <div>
+    <>
       <Header />
-      Homepage
-    </div>
+      {isLoading === true ? (
+        <div className="loader-container">
+          <div className="spinner"></div>
+        </div>
+      ) : (
+        <WrapHomepage>
+          {newsList &&
+            newsList.map((post, index) => {
+              const { hostname } = new URL(
+                post.url || "https://news.ycombinator.com"
+              );
+
+              return (
+                <div className="item" key={post.id}>
+                  <Title>
+                    {/* page_size = 30 */}
+                    {(page - 1) * 30 + index + 1}.
+                    <span className="arrow-up" />
+                  </Title>
+                  <span>
+                    <span>{post.title}</span>{" "}
+                    <span className="hostname"> ({hostname})</span>
+                    <Subscript>
+                      {post.score} point by {post.by}{" "}
+                      {getElapsedTime(post.time)} | hide | {post.descendants}{" "}
+                      {post.descendants > 1 ? "comments" : "comment"}
+                    </Subscript>
+                  </span>
+                </div>
+              );
+            })}
+          <Link to={`?page=${Number(page) + 1}`}>More</Link>
+        </WrapHomepage>
+      )}
+    </>
   );
 };
 

@@ -47,11 +47,11 @@ const Header = () => {
           <strong style={{ padding: "0 4px" }}>Hacker News</strong>
         </span>
         <div>
-          {Links.map((link) => (
-            <>
+          {Links.map((link, index) => (
+            <span key={index}>
               <CTLink to={link.url}>{link.title}</CTLink>
               {link.title !== "submit" && " | "}
-            </>
+            </span>
           ))}
         </div>
       </LeftSection>

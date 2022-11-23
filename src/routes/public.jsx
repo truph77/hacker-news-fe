@@ -8,6 +8,8 @@ const Public = () => {
     <>
       <Routes>
         <Route path="/" element={<HomepageContainer />} />
+        <Route path="/:page" element={<HomepageContainer />} />
+        <Route path="/news/:page" element={<HomepageContainer />} />
         {/* <Route path="*" component={PageNotFound} /> */}
       </Routes>
     </>
