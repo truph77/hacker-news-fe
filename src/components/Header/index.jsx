@@ -55,7 +55,7 @@ const Header = () => {
           ))}
         </div>
       </LeftSection>
-      <CTLink>Login</CTLink>
+      <CTLink to="/login">Login</CTLink>
     </WrapHeader>
   );
 };

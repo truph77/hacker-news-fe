@@ -1,3 +1,4 @@
+import Footer from "components/Footer";
 import Header from "components/Header";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -42,9 +43,15 @@ const Homepage = ({ newsList, isLoading, page }) => {
                 </div>
               );
             })}
-          <Link to={`/news?page=${Number(page) + 1}`}>More</Link>
+          <Link
+            to={`/news?page=${Number(page) + 1}`}
+            style={{ marginLeft: 37 }}
+          >
+            More
+          </Link>
         </WrapHomepage>
       )}
+      <Footer />
     </>
   );
 };
