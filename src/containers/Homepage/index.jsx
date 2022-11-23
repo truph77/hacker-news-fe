@@ -19,7 +19,6 @@ const HomepageContainer = () => {
     fetchData();
   }, [page]);
 
-  console.log(newsList);
   return <Homepage newsList={newsList} isLoading={isLoading} page={page} />;
 };
 

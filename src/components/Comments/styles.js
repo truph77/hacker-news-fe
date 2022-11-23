@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const WrapHomepage = styled.div`
+export const WrapComments = styled.div`
   padding: 10px;
   white-space: break-spaces;
 
@@ -12,22 +12,26 @@ export const WrapHomepage = styled.div`
     border-right: 4px solid transparent;
 
     border-bottom: 7px solid black;
-    margin: 0 4px;
+    margin: 0 7px;
+    padding-top: 7px;
   }
 
   .item {
-    margin: 10px 0;
+    margin-top: 10px;
     display: flex;
   }
 
-  .hostname {
+  .sub-script {
+    font-size: 14px;
     color: #828282;
   }
-`;
 
-export const Title = styled.span``;
+  .reply {
+    font-size: 12px;
+    color: #828282;
+  }
 
-export const Subscript = styled.div`
-  font-size: 14px;
-  color: #828282;
+  .move-left {
+    margin-left: 50px;
+  }
 `;

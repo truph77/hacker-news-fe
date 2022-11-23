@@ -17,7 +17,7 @@ const Homepage = ({ newsList, isLoading, page }) => {
           {newsList &&
             newsList.map((post, index) => {
               const { hostname } = new URL(
-                post.url || "https://news.ycombinator.com"
+                post.url || process.env.REACT_APP_URL
               );
 
               return (
@@ -32,14 +32,17 @@ const Homepage = ({ newsList, isLoading, page }) => {
                     <span className="hostname"> ({hostname})</span>
                     <Subscript>
                       {post.score} point by {post.by}{" "}
-                      {getElapsedTime(post.time)} | hide | {post.descendants}{" "}
-                      {post.descendants > 1 ? "comments" : "comment"}
+                      {getElapsedTime(post.time)} | hide |{" "}
+                      <Link to={`/item?id=${Number(post.id)}`}>
+                        {post.descendants}{" "}
+                        {post.descendants > 1 ? "comments" : "comment"}
+                      </Link>
                     </Subscript>
                   </span>
                 </div>
               );
             })}
-          <Link to={`?page=${Number(page) + 1}`}>More</Link>
+          <Link to={`/news?page=${Number(page) + 1}`}>More</Link>
         </WrapHomepage>
       )}
     </>
