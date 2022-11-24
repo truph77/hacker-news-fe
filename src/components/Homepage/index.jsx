@@ -30,7 +30,9 @@ const Homepage = ({ newsList, isLoading, page }) => {
                   </Title>
                   <span>
                     <span>{post.title}</span>{" "}
-                    <span className="hostname"> ({hostname})</span>
+                    <a href={post.url} style={{ textDecoration: "none" }}>
+                      <span className="hostname"> ({hostname})</span>
+                    </a>
                     <Subscript>
                       {post.score} point by {post.by}{" "}
                       {getElapsedTime(post.time)} | hide |{" "}
